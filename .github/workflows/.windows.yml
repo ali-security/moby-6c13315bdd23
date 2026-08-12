@@ -52,6 +52,13 @@ jobs:
         working-directory: ${{ env.GOPATH }}/src/github.com/docker/docker
     steps:
       -
+        name: Enable long paths
+        # The job default working-directory is the checkout target, which does
+        # not exist yet at this point.
+        working-directory: ${{ github.workspace }}
+        run: |
+          git config --system core.longpaths true
+      -
         name: Checkout
         uses: actions/checkout@v4
         with:
@@ -115,6 +122,13 @@ jobs:
       run:
         working-directory: ${{ env.GOPATH }}/src/github.com/docker/docker
     steps:
+      -
+        name: Enable long paths
+        # The job default working-directory is the checkout target, which does
+        # not exist yet at this point.
+        working-directory: ${{ github.workspace }}
+        run: |
+          git config --system core.longpaths true
       -
         name: Checkout
         uses: actions/checkout@v4
@@ -262,6 +276,13 @@ jobs:
       run:
         working-directory: ${{ env.GOPATH }}/src/github.com/docker/docker
     steps:
+      -
+        name: Enable long paths
+        # The job default working-directory is the checkout target, which does
+        # not exist yet at this point.
+        working-directory: ${{ github.workspace }}
+        run: |
+          git config --system core.longpaths true
       -
         name: Checkout
         uses: actions/checkout@v4
